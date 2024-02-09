@@ -1,4 +1,4 @@
-from flask import Flask, send_file, jsonify
+from flask import Flask, send_file, jsonify, redirect, url_for
 from model import generate_plot_and_metrics
 
 app = Flask(__name__)
@@ -12,6 +12,11 @@ def plot():
 def show_metrics():
     _, metrics = generate_plot_and_metrics()
     return jsonify(metrics)
+
+@app.route('/mlflow')
+def mlflow_ui():
+    # This assumes MLflow is running on the default port 5000 on the host machine
+    return redirect("http://127.0.0.1:5000")
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)
