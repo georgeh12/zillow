@@ -16,6 +16,46 @@ Docker simplifies the management of application processes and environments, ensu
 
 Before you begin, ensure that Docker is installed and set up on your system. Please refer to the [official Docker documentation](https://docs.docker.com/get-docker/) for installation instructions for your specific operating system.
 
+1. Go to [Docker Installation Guide](https://docs.docker.com/install/) and install Docker CE (Community Edition) according to your system. Scroll down to find links for Mac and Windows downloads.
+
+2. After installation, make sure you have the Docker daemon running in the background. On macOS and Windows, Docker typically runs as a desktop application. You can start Docker by finding the Docker application and opening it.
+
+3. Use the command `docker ps` to check if it is running. You should see table headers with empty rows, indicating that Docker is running but no containers are currently running:
+
+```
+CONTAINER ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
+```
+
+4. To verify that Docker runs correctly on your system, execute the  `Hello World` test image:
+
+```
+docker run hello-world
+```
+If you see the following message, it means you have installed Docker correctly:
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (arm64v8)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+
 ## Build a Flask-based ML Regression App
 
 First, clone the repository or download the two Python files (`app.py` and `model.py`), the `Dockerfile`, and `requirements.txt` into a folder on your machine.
