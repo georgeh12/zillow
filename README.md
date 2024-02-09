@@ -21,7 +21,7 @@ Before you begin, ensure that Docker is installed and set up on your system. Ple
 First, clone the repository or download the two Python files (`app.py` and `model.py`), the `Dockerfile`, and `requirements.txt` into a folder on your machine.
 
 ```
-git clone https://github.com/your-username/OAI-lab2.git
+git clone https://github.com/jyunyuk/OAI-lab2.git
 cd OAI-lab2
 ```
 
