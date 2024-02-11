@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1707620893298
+current_stage: None
+description: ''
+last_updated_timestamp: 1707620893298
+name: zillow
+run_id: ae4be93eeba842af8892f5a3431b3a42
+run_link: ''
+source: file:///c:/Users/georg/Documents/GitHub/zillow/mlruns/130719581604467322/ae4be93eeba842af8892f5a3431b3a42/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///c:/Users/georg/Documents/GitHub/zillow/mlruns/130719581604467322/ae4be93eeba842af8892f5a3431b3a42/artifacts/model
+user_id: null
+version: 1

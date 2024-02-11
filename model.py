@@ -1,5 +1,6 @@
 import mlflow
 import mlflow.sklearn
+import mlflow.pyfunc
 
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split

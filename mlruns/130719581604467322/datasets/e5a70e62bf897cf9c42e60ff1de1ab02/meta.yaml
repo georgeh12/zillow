@@ -1,0 +1,7 @@
+digest: 516b0305
+name: dataset
+profile: '{"num_rows": 273, "num_elements": 273}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "area", "required": true}]}'
+source: '{"tags": {"mlflow.user": "georg", "mlflow.source.name": "c:\\Users\\georg\\Documents\\GitHub\\.venv\\lib\\site-packages\\ipykernel_launcher.py",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code

@@ -1,0 +1,15 @@
+artifact_uri: file:///c:/Users/georg/Documents/GitHub/zillow/mlruns/130719581604467322/ae4be93eeba842af8892f5a3431b3a42/artifacts
+end_time: 1707619824909
+entry_point_name: ''
+experiment_id: '130719581604467322'
+lifecycle_stage: active
+run_id: ae4be93eeba842af8892f5a3431b3a42
+run_name: gifted-owl-28
+run_uuid: ae4be93eeba842af8892f5a3431b3a42
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707619822380
+status: 3
+tags: []
+user_id: georg

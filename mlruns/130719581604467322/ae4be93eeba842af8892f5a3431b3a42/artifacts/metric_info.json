@@ -1,0 +1,3 @@
+{
+  "mean_absolute_error__X_test": "mean_absolute_error(y_true=_y_test, y_pred=_y_pred)"
+}
