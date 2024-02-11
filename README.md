@@ -1,137 +1,116 @@
-# OAI-lab2
+# Datasheet for dataset "Housing"
 
-## 94879 Fundamentals of Operationalizing AI Lab 2 | Introduction to Docker and Docker Hub
+Questions from the [Datasheets for Datasets](https://arxiv.org/abs/1803.09010) paper, v7.
 
-![Docker GIF](docker_meme/dockergif.gif)
+Jump to section:
 
-## Introduction to Docker and Why Docker
+- [Motivation](#motivation)
+- [Composition](#composition)
+- [Collection process](#collection-process)
+- [Preprocessing/cleaning/labeling](#preprocessingcleaninglabeling)
+- [Uses](#uses)
+- [Distribution](#distribution)
+- [Maintenance](#maintenance)
 
-![Why Docker](docker_meme/whydocker.png)
+## Motivation
 
-Docker is a powerful platform for developing, shipping, and running applications. By using Docker, you can quickly deploy and scale applications into any environment and be assured your code will run.
+The related project is an attempt to recreate machine learning models to use in the [Zillow Prize: Zillow’s Home Value Prediction (Zestimate)](https://www.kaggle.com/c/zillow-prize-1/).
 
-Docker simplifies the management of application processes and environments, ensuring that your application works seamlessly in development, staging, and production. This lab introduces Docker and Docker Hub, giving you the practical experience to deploy a Flask-based machine learning regression app using Docker containers.
+### For what purpose was the dataset created? 
 
-## Docker Install and Set up
+Testing house price prediction using regression models with machine learning.
 
-Before you begin, ensure that Docker is installed and set up on your system. Please refer to the [official Docker documentation](https://docs.docker.com/get-docker/) for installation instructions for your specific operating system.
+### Who created the dataset (e.g., which team, research group) and on behalf of which entity (e.g., company, institution, organization)?
+This dataset was collected from [Kaggle Housing Prices Dataset](https://www.kaggle.com/code/yasserh/housing-price-prediction-best-ml-algorithms/input) by M Yasser H.
 
-1. Go to [Docker Installation Guide](https://docs.docker.com/install/) and install Docker CE (Community Edition) according to your system. Scroll down to find links for Mac and Windows downloads.
+### Who funded the creation of the dataset? 
 
-2. After installation, make sure you have the Docker daemon running in the background. On macOS and Windows, Docker typically runs as a desktop application. You can start Docker by finding the Docker application and opening it.
+Kaggle
 
-3. Use the command `docker ps` to check if it is running. You should see table headers with empty rows, indicating that Docker is running but no containers are currently running:
+## Composition
 
-```
-CONTAINER ID    IMAGE   COMMAND CREATED STATUS  PORTS   NAMES
-```
+Data is licensed under [CC0: Public Domain](https://creativecommons.org/publicdomain/zero/1.0/).
 
-4. To verify that Docker runs correctly on your system, execute the  `Hello World` test image:
+### What do the instances that comprise the dataset represent (e.g., documents, photos, people, countries)?
 
-```
-docker run hello-world
-```
-If you see the following message, it means you have installed Docker correctly:
-```
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
+Housing prices and features.
 
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    (arm64v8)
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+### How many instances are there in total (of each type, if appropriate)?
 
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
+504 house entries
 
-Share images, automate workflows, and more with a free Docker ID:
- https://hub.docker.com/
+### Does the dataset contain all possible instances or is it a sample (not necessarily random) of instances from a larger set?
 
-For more examples and ideas, visit:
- https://docs.docker.com/get-started/
-```
+The dataset may represent a sample of extremely expensive houses, houses in a different currency than USD, or neglected a decimal point in the housing prices to indicate 00 fractional dollars.
 
+### What data does each instance consist of? 
 
-## Build a Flask-based ML Regression App
+The following feature data is available for each house: price (positive integer), area (positive integer), bedrooms (positive integer), bathrooms (positive integer), stories (positive integer), mainroad (yes/no), guestroom (yes/no), basement (yes/no), hotwaterheating (yes/no), airconditioning (yes/no), parking (0-3), prefarea (yes/no), furnishingstatus (furnished/semi-furnished/unfurnished).
 
-First, clone the repository or download the two Python files (`app.py` and `model.py`), the `Dockerfile`, and `requirements.txt` into a folder on your machine.
+### Is there a label or target associated with each instance?
 
-```
-git clone https://github.com/jyunyuk/OAI-lab2.git
-cd OAI-lab2
-```
+No
 
-## Step by Step: Dockerize It
-### Step 0: Create your `Dockerfile` and `requirements.txt`
-### Step 1: Build the Docker Image:
-```
-docker build -t myapp .
-```
+### Is any information missing from individual instances?
 
-### Step 2: Run the Flask App in a Docker Container:
-After the image is built, run your app inside a Docker container using the following command. This command maps your container's port 80 to port 80 on your host, making the app accessible on port 80.
-```
-docker run -p 80:80 myapp
-```
+No
 
-### Step 3: Visit Your App:
-Open your browser and navigate to http://127.0.0.1:80 to see the Flask app running in a Docker container.
+### Are relationships between individual instances made explicit (e.g., users’ movie ratings, social network links)?
 
-## Deploy Your App on Docker Hub
-### Step 1: Tag Your Docker Image
-Before you push your Docker image to Docker Hub, you need to tag it with your Docker Hub username and repository name. The general format for the tag is `username/repository:tag`. If you don't specify a tag, latest is used by default.
+No relationships observed.
 
-For example, if your Docker Hub username is username and you want your repository to be named myapp, you would tag your Docker image like this:
-```
-docker tag myapp username/myapp:latest
-```
+### Are there recommended data splits (e.g., training, development/validation, testing)?
 
-### Step 2: Push the Docker Image to Docker Hub
-Now, push the tagged image to Docker Hub using the docker push command:
-```
-docker push username/myapp:latest
-```
-Replace  `username/myapp:latest` with the tag you used in the previous step. This will upload your image to Docker Hub.
+No. I used a 50-50 split of training and testing data.
 
+### Are there any errors, sources of noise, or redundancies in the dataset?
 
+The price of the houses seems rather high. It is possible that the author did not include the decimal point to indicate a fractional dollar, or the prices are in a different denomination than USD.
 
-### Step 3: Verify the Image is on Docker Hub
-- Go to [Docker Hub](https://hub.docker.com/).
-- Log in to your account.
-- Navigate to your repositories to see if myapp is listed there.
-  
-  
-  
-### Step 4: Pull the Docker Image from Docker Hub
-On any system with Docker installed, you can now test pulling down the image from Docker Hub:
-```
-docker pull username/myapp:latest
-```
+### Is the dataset self-contained, or does it link to or otherwise rely on external resources (e.g., websites, tweets, other datasets)?
 
-### Step 5: Run the Container from the Pulled Image
-After pulling the image, you can run a container from it to make sure it works:
-```
-docker run -p 80:80 username/myapp:latest
-```
-This will start a container from your Docker image and map port 80 from the container to port 80 on the host machine.
+Self-contained.
 
+### Does the dataset contain data that might be considered confidential (e.g., data that is protected by legal privilege or by doctor-patient confidentiality, data that includes the content of individuals’ non-public communications)?
 
+No, public housing data only.
 
-### Step 6: Test the Application
-Open a web browser and navigate to http://127.0.0.1:80 to see if your application is running as expected.
+### Does the dataset contain data that, if viewed directly, might be offensive, insulting, threatening, or might otherwise cause anxiety?
 
+No
 
-## Terminologies
-- **Images:** In our Flask application context, an image is the static snapshot of our app's code, libraries, and dependencies. It acts as a template to create containers. When we built our app's image with docker build, we effectively created this blueprint.
+### Does the dataset relate to people? 
 
-- **Containers:** These are the running instances of Docker images. When we executed docker run with our Flask app's image, we created a container where our app is live and can respond to requests. You can see all running containers with docker ps.
+No
 
-- **Docker Daemon:** This is a persistent background service that manages and orchestrates Docker containers on the host machine. It was responsible for handling the image creation and container management when we used commands like docker build and docker run for our Flask application.
+### Does the dataset identify any subpopulations (e.g., by age, gender)?
 
-- **Docker Client:** It's the tool, typically the command line interface (CLI), that we used to give instructions to the Docker Daemon, such as building an image (docker build) or starting a container (docker run). It communicates with the Docker Daemon to execute these commands.
+No
 
-- **Docker Hub:** A cloud-based registry service to share and store Docker images. When we pushed our Flask app's image using docker push, it was uploaded to Docker Hub, making it available for others to download and use with docker pull.
+### Is it possible to identify individuals (i.e., one or more natural persons), either directly or indirectly (i.e., in combination with other data) from the dataset?
+
+No
+
+### Does the dataset contain data that might be considered sensitive in any way (e.g., data that reveals racial or ethnic origins, sexual orientations, religious beliefs, political opinions or union memberships, or locations; financial or health data; biometric or genetic data; forms of government identification, such as social security numbers; criminal history)?
+
+No
+
+## Collection process
+
+It is unclear how the author collected this data or if it was generated.
+
+## Preprocessing/cleaning/labeling
+
+Data was not manipulated from the original sample.
+
+## Uses
+
+Other users of Kaggle reported that the data is useful for Learning (64), Research (12), and Application (6).
+
+## Distribution
+
+Data will be distributed to Carnegie Mellon University.
+
+## Maintenance
+
+Kaggle is supporting the dataset. The author has not made changes to the dataset after it was first uploaded January 12, 2022.
