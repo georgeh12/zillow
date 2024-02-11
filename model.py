@@ -70,11 +70,11 @@ def generate_plot_and_metrics():
 
         # Generate a plot
         plt.figure(figsize=(10, 6))
-        sns.scatterplot(x=_X_test[:, 0], y=_y_test, color='green', label='Actual', s=50)  # s is the size of the dots
-        sns.lineplot(x=_X_test[:, 0], y=_y_pred, color='orange', label='Predicted', linewidth=2)
-        plt.xlabel('Feature')
-        plt.ylabel('Target')
-        plt.title('Regression Plot')
+        plt.scatter(np.exp(_X_train), np.exp(_y_train), label='Actual', color='red')
+        plt.plot(np.exp(_X_test), np.exp(_y_pred), label='Predicted', color='blue', linewidth=3)
+        plt.xlabel('House Features')
+        plt.ylabel('Price')
+        plt.title('Log-Transformed Linear Regression - House Features vs. Price')
         plt.legend()
 
         # Save plot to a bytes buffer
